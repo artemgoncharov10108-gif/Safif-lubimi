@@ -1,0 +1,265 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(145deg, #1a0b1a 0%, #2d1b2d 100%);
+    font-family: 'Inter', sans-serif;
+    color: #f3e6f0;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* Анимированные сердца на фоне */
+.floating-hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.heart-bg {
+    position: absolute;
+    font-size: 1.5rem;
+    opacity: 0.15;
+    animation: floatHeart 12s infinite linear;
+    user-select: none;
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.15;
+    }
+    90% {
+        opacity: 0.15;
+    }
+    100% {
+        transform: translateY(-20vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Контейнер */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    position: relative;
+    z-index: 10;
+}
+
+/* Главный блок */
+.hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+    border-radius: 3rem;
+    margin-bottom: 3rem;
+    border: 1px solid rgba(255, 105, 180, 0.3);
+    animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    background: linear-gradient(135deg, #ffb6c1, #ff6b8a, #ffb347);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.hero .sub {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #ffb6c1;
+}
+
+/* Сетка причин */
+.reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.reason-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 182, 193, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+}
+
+.reason-card:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #ff6b8a;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.card-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffb6c1;
+    margin-bottom: 0.5rem;
+}
+
+.card-text {
+    font-size: 1rem;
+}
+
+/* Кнопка сюрприз */
+.surprise-btn {
+    display: block;
+    margin: 2rem auto;
+    background: linear-gradient(95deg, #ff6b8a, #ff8c9e);
+    border: none;
+    padding: 14px 32px;
+    border-radius: 60px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 6px 20px rgba(255, 107, 138, 0.4);
+    width: fit-content;
+}
+
+.surprise-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px rgba(255, 107, 138, 0.7);
+}
+
+/* Галерея */
+.gallery {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+}
+
+.gallery-item {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(145deg, #ffb6c1, #ff8c9e);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #ff6b8a;
+}
+
+/* Цитата */
+.quote {
+    text-align: center;
+    font-size: 1.3rem;
+    font-style: italic;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    border-radius: 2rem;
+    padding: 2rem;
+    margin: 2rem 0;
+    border: 1px solid rgba(255, 182, 193, 0.3);
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    opacity: 0.7;
+    font-size: 0.85rem;
+}
+
+@media (max-width: 680px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    .reasons-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Модальное окно для сюрприза */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+}
+
+.modal-content {
+    background: linear-gradient(145deg, #2d1b2d, #1a0b1a);
+    border-radius: 2rem;
+    padding: 2rem;
+    text-align: center;
+    max-width: 400px;
+    border: 2px solid #ff6b8a;
+    animation: bounce 0.4s ease;
+}
+
+@keyframes bounce {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.modal-content h2 {
+    color: #ffb6c1;
+    margin-bottom: 1rem;
+}
+
+.close-modal {
+    background: #ff6b8a;
+    border: none;
+    padding: 10px 28px;
+    border-radius: 40px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 1rem;
+}
